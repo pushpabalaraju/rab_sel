@@ -4,4 +4,4 @@ from celery import Celery
 app = Celery('test_celery',
              broker='amqp://pushpa:push123@localhost/pushpa_vhost',
              backend='rpc://',
-             include=['test_celery.send','test_celery.receive','test_celery.receiver2'])
+             include=['test_celery.invoice','test_celery.receive'])

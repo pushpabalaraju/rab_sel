@@ -1,25 +1,20 @@
 from __future__ import absolute_import
-from send import *
-from .receive import recv 
-from .receiver2 import recv2 
+from .receive import * 
 import time
 
 print("initialize")
-send_p()
-# send_p()
-
-
-# at this time, our task is not finished, so it will return False
-# print ('Task finished? ', result.ready())
-# print ('Task result: ', result)
-# sleep 10 seconds to ensure the task has been finished
-
-time.sleep(3)
-# now the task should be finished and ready method will return True
-# print ('Task finished? ', result.ready())
-recv2()
-print("am i alive?")
-recv()
-print("2nd task is alive too")
-
-# print ('Task result: ', result)
+for i in range(3):
+	send_p()
+print("this is after send")
+Wk1=recv.delay() 
+status = Wk1.ready()
+print("----- {} ".format(status))
+print("this is after receiver 1 without delay")
+time.sleep(5)
+status = Wk1.ready()
+print("----- {} ".format(status))
+# b=Wk1.get()
+# print("---rsults-- {} ".format(b.backend))
+print("this is after receiver 1 after delay")
+recv2.delay()
+print("this is after receiver2")
